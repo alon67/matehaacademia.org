@@ -1,0 +1,177 @@
+:root {
+  --bg: #f7f8fa;
+  --surface: #ffffff;
+  --text: #16203a;
+  --muted: #5b6478;
+  --accent: #1e5aa8;
+  --accent-dark: #16406f;
+  --border: #e3e7ee;
+  --shadow: 0 1px 2px rgba(22, 32, 58, .06), 0 6px 20px rgba(22, 32, 58, .08);
+  --shadow-hover: 0 4px 10px rgba(22, 32, 58, .12), 0 16px 40px rgba(22, 32, 58, .18);
+  --maxw: 1120px;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0e1320;
+    --surface: #161d2e;
+    --text: #e8ecf4;
+    --muted: #9aa3b8;
+    --accent: #5b9be8;
+    --accent-dark: #3f7fca;
+    --border: #26304a;
+    --shadow: 0 1px 2px rgba(0, 0, 0, .3), 0 6px 20px rgba(0, 0, 0, .35);
+    --shadow-hover: 0 4px 10px rgba(0, 0, 0, .4), 0 16px 40px rgba(0, 0, 0, .5);
+  }
+}
+
+* { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: "Assistant", "Heebo", "Rubik", "Segoe UI", "Arial Hebrew", Arial, sans-serif;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+.wrap { max-width: var(--maxw); margin: 0 auto; padding: 0 20px; }
+
+/* ---------- Header ---------- */
+.hero {
+  background:
+    radial-gradient(1200px 400px at 80% -10%, rgba(30, 90, 168, .12), transparent 60%),
+    linear-gradient(180deg, var(--surface), var(--bg));
+  border-bottom: 1px solid var(--border);
+  padding: 64px 0 44px;
+  text-align: center;
+}
+.hero h1 {
+  margin: 0;
+  font-size: clamp(2.4rem, 6vw, 4rem);
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  line-height: 1.05;
+}
+.hero .en {
+  display: block;
+  font-size: clamp(1rem, 2.4vw, 1.4rem);
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  color: var(--accent);
+  margin-top: 10px;
+  direction: ltr;
+}
+.motto {
+  margin: 22px auto 0;
+  max-width: 640px;
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+  font-weight: 700;
+  color: var(--text);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 0;
+}
+
+/* ---------- Intro ---------- */
+.intro { padding: 46px 0 8px; }
+.intro .col { max-width: 760px; margin: 0 auto; }
+.intro p { margin: 0 0 1.15em; font-size: 1.12rem; }
+.intro p strong { color: var(--accent-dark); }
+
+/* ---------- Section heading ---------- */
+.section-head {
+  text-align: center;
+  margin: 40px 0 26px;
+}
+.section-head h2 {
+  display: inline-block;
+  margin: 0;
+  font-size: 1.7rem;
+  font-weight: 800;
+  padding-bottom: 8px;
+  border-bottom: 3px solid var(--accent);
+}
+
+/* ---------- Gallery ---------- */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  gap: 22px;
+  padding: 4px 0 8px;
+}
+.card {
+  display: flex;
+  flex-direction: column;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+  text-decoration: none;
+  color: inherit;
+  transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+}
+.card:hover, .card:focus-visible {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-hover);
+  border-color: var(--accent);
+  outline: none;
+}
+.card:focus-visible { outline: 3px solid var(--accent); outline-offset: 2px; }
+.card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  aspect-ratio: 1 / 1;
+  object-fit: cover;
+  background: var(--bg);
+}
+.card .meta {
+  padding: 12px 14px 14px;
+  border-top: 1px solid var(--border);
+}
+.card .title { font-weight: 700; font-size: 1.02rem; }
+.card .date { color: var(--muted); font-size: .9rem; margin-top: 3px; }
+.card .pdf-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 9px;
+  font-size: .8rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+/* ---------- About / closing ---------- */
+.about {
+  margin: 54px 0 10px;
+  padding: 30px 32px;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  box-shadow: var(--shadow);
+}
+.about h2 { margin: 0 0 10px; font-size: 1.25rem; }
+.about p { margin: 0; color: var(--muted); direction: ltr; text-align: left; }
+
+/* ---------- Footer ---------- */
+footer {
+  margin-top: 56px;
+  padding: 30px 0 40px;
+  border-top: 1px solid var(--border);
+  text-align: center;
+  color: var(--muted);
+  font-size: .92rem;
+}
+footer .fmotto { font-weight: 700; color: var(--text); margin-bottom: 6px; }
+
+@media (max-width: 520px) {
+  .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
+  .hero { padding: 46px 0 34px; }
+  .about { padding: 24px 20px; }
+}
