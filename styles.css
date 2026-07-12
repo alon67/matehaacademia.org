@@ -147,17 +147,33 @@ body {
   color: var(--accent);
 }
 
-/* ---------- About / closing ---------- */
-.about {
-  margin: 54px 0 10px;
-  padding: 30px 32px;
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  box-shadow: var(--shadow);
+/* ---------- SpeakOut (English) section ---------- */
+.speakout {
+  margin: 60px 0 10px;
+  padding-top: 46px;
+  border-top: 1px solid var(--border);
 }
-.about h2 { margin: 0 0 10px; font-size: 1.25rem; }
-.about p { margin: 0; color: var(--muted); direction: ltr; text-align: left; }
+.sp-head h2 {
+  border-bottom-color: #f04e23;
+  color: #f04e23;
+  font-size: 2rem;
+  letter-spacing: 0.01em;
+}
+.sp-desc {
+  max-width: 900px;
+  margin: 0 auto 30px;
+  font-size: 1.12rem;
+  color: var(--text);
+  text-align: left;
+}
+.sp-desc strong { font-weight: 800; }
+.sp-gallery {
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  max-width: 940px;
+  margin: 0 auto;
+}
+.sp-card .meta { text-align: center; }
+.sp-card .pdf-tag { justify-content: center; width: 100%; }
 
 /* ---------- Footer ---------- */
 footer {
