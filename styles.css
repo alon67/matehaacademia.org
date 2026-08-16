@@ -43,6 +43,7 @@ body {
 
 /* ---------- Header ---------- */
 .hero {
+  position: relative;
   background:
     radial-gradient(1200px 400px at 80% -10%, rgba(30, 90, 168, .12), transparent 60%),
     linear-gradient(180deg, var(--surface), var(--bg));
@@ -50,6 +51,19 @@ body {
   padding: 64px 0 44px;
   text-align: center;
 }
+/* Small standing credit in the top-left corner — deliberately quiet,
+   it is not the page title. */
+.site-logo {
+  position: absolute;
+  top: 18px;
+  left: 20px;
+  height: 38px;
+  width: auto;
+  border-radius: 3px;
+  opacity: .82;
+  transition: opacity .18s ease;
+}
+.site-logo:hover { opacity: 1; }
 .hero h1 {
   margin: 0;
   font-size: clamp(2.4rem, 6vw, 4rem);
@@ -188,6 +202,8 @@ footer .fmotto { font-weight: 700; color: var(--text); margin-bottom: 6px; }
 
 @media (max-width: 520px) {
   .gallery { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 16px; }
-  .hero { padding: 46px 0 34px; }
+  .hero { padding: 58px 0 34px; }
   .about { padding: 24px 20px; }
+  /* Smaller, tucked closer to the corner so it clears the title. */
+  .site-logo { height: 26px; top: 12px; left: 12px; }
 }
