@@ -23,11 +23,14 @@
     document.querySelectorAll('section.month, #intro, #afterword').forEach(function (s) { io.observe(s); });
   }
 
+  var PAGE = document.querySelector('.page');
+  var EN = PAGE && PAGE.getAttribute('lang') === 'en';
+  var COPIED = EN ? 'Link copied' : 'הקישור הועתק';
   // Toast
   var toastTimer;
   function toast(msg) {
     var t = document.querySelector('.toast');
-    if (!t) { t = document.createElement('div'); t.className = 'toast'; t.dir = 'rtl'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
+    if (!t) { t = document.createElement('div'); t.className = 'toast'; t.dir = EN ? 'ltr' : 'rtl'; t.setAttribute('role', 'status'); document.body.appendChild(t); }
     t.textContent = msg; t.hidden = false;
     clearTimeout(toastTimer); toastTimer = setTimeout(function () { t.hidden = true; }, 2200);
   }
@@ -39,14 +42,14 @@
   }
   function copy(text) {
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      return navigator.clipboard.writeText(text).then(function () { toast('הקישור הועתק'); }, function () { fallbackCopy(text); });
+      return navigator.clipboard.writeText(text).then(function () { toast(COPIED); }, function () { fallbackCopy(text); });
     }
     fallbackCopy(text);
   }
   function fallbackCopy(text) {
     var ta = document.createElement('textarea'); ta.value = text; ta.setAttribute('readonly', '');
     ta.style.position = 'fixed'; ta.style.opacity = '0'; document.body.appendChild(ta); ta.select();
-    try { document.execCommand('copy'); toast('הקישור הועתק'); } catch (e) { toast(text); }
+    try { document.execCommand('copy'); toast(COPIED); } catch (e) { toast(text); }
     document.body.removeChild(ta);
   }
 
