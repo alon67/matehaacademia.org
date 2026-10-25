@@ -24,8 +24,9 @@
   }
 
   var PAGE = document.querySelector('.page');
-  var EN = PAGE && PAGE.getAttribute('lang') === 'en';
-  var COPIED = EN ? 'Link copied' : 'הקישור הועתק';
+  var PL = PAGE ? PAGE.getAttribute('lang') : 'he';
+  var EN = PL === 'en';
+  var COPIED = { en: 'Link copied', ar: 'تم نسخ الرابط' }[PL] || 'הקישור הועתק';
   // Toast
   var toastTimer;
   function toast(msg) {
